@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPCX · 悉尼买入完整指南 / How to buy from Sydney</title>
+<meta name="description" content="Step-by-step bilingual guide to buying SpaceX (SPCX) from Sydney with A$10,000 — broker choice, FX, order placement, tax. Not financial advice.">
+<style>
+  :root{
+    --bg:#ffffff; --surface:#f6f5f1; --card:#ffffff; --text:#1b1b19; --muted:#5f5e5a; --hint:#8a8980;
+    --border:rgba(0,0,0,.12); --border2:rgba(0,0,0,.22);
+    --info:#0c447c; --info-bg:#e6f1fb; --success:#0f6e56; --success-bg:#e1f5ee;
+    --danger:#a32d2d; --danger-bg:#fcebeb; --warn:#854f0b; --warn-bg:#faeeda;
+    --radius:12px; --radius-sm:8px;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#1c1b19; --surface:#26251f; --card:#222019; --text:#ece9e2; --muted:#b4b2a9; --hint:#888780;
+      --border:rgba(255,255,255,.14); --border2:rgba(255,255,255,.26);
+      --info:#85b7eb; --info-bg:#0c447c; --success:#5dcaa5; --success-bg:#0f6e56;
+      --danger:#f09595; --danger-bg:#791f1f; --warn:#fac775; --warn-bg:#633806;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.7;font-size:16px}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 64px}
+  a{color:var(--info);text-decoration:none} a:hover{text-decoration:underline}
+  h1{font-size:25px;font-weight:600;margin:22px 0 4px}
+  h2{font-size:19px;font-weight:600;margin:32px 0 12px;padding-top:8px;border-top:1px solid var(--border)}
+  h3{font-size:15px;font-weight:600;margin:14px 0 8px}
+  p{margin:0 0 12px} ul,ol{margin:0 0 12px;padding-left:22px} li{margin:7px 0}
+  .sub{color:var(--muted);font-size:14px}
+  .nav{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:18px 0 6px;font-size:14px}
+  .langbar{position:sticky;top:0;z-index:9;background:var(--bg);display:flex;gap:8px;align-items:center;
+    padding:10px 0;margin-bottom:8px;border-bottom:1px solid var(--border)}
+  .langbar .lbl{font-size:13px;color:var(--muted);margin-right:2px}
+  .langbar button{font:inherit;font-size:13.5px;padding:5px 14px;border:1px solid var(--border2);background:transparent;
+    color:var(--text);border-radius:999px;cursor:pointer}
+  .langbar button.active{background:var(--info-bg);color:var(--info);border-color:transparent;font-weight:500}
+  .banner{background:var(--warn-bg);color:var(--warn);border-radius:var(--radius);padding:12px 16px;font-size:13.5px;margin:14px 0}
+  .insight{background:var(--surface);border-radius:var(--radius);padding:12px 16px;margin:12px 0;font-size:14.5px}
+  .insight p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 14px}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--muted);font-weight:500;font-size:12px}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .pos{color:var(--success)} .neg{color:var(--danger)}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin:10px 0}
+  .foot{margin-top:36px;padding-top:16px;border-top:1px solid var(--border);font-size:12.5px;color:var(--hint)}
+  code{background:var(--surface);padding:1px 6px;border-radius:6px;font-size:13.5px}
+  body.show-zh .en{display:none}
+  body.show-en .zh{display:none}
+</style>
+</head>
+<body class="show-both">
+<div class="wrap">
+
+  <div class="nav">
+    <a href="./">← <span class="zh">仪表盘 Dashboard</span><span class="en">Dashboard</span></a>
+    <span class="sub">·</span>
+    <a href="read.html"><span class="zh">深度解读 Deep-dive</span><span class="en">Deep-dive</span></a>
+    <span class="sub">·</span>
+    <a href="https://github.com/YunshuGao/spcx-research">GitHub</a>
+  </div>
+
+  <h1>SPCX · 悉尼买入完整指南 / How to buy from Sydney</h1>
+  <div class="sub">用 A$10,000 一步步买入 SPCX · 截至 2026 年 6 月 / Step-by-step with A$10,000 · as of Jun 2026</div>
+
+  <div class="langbar">
+    <span class="lbl">显示 / Show:</span>
+    <button data-m="both" class="active">双语 Both</button>
+    <button data-m="zh">中文</button>
+    <button data-m="en">English</button>
+  </div>
+
+  <div class="banner">
+    <span class="zh"><strong>一句话：</strong>最大的成本不是佣金，而是换汇（A$→US$）。用限价单、分批买、把澳元一次性换成美元再买。</span>
+    <span class="en"><strong>TL;DR:</strong> your biggest cost is FX (A$→US$), not commission. Use limit orders, stagger your buys, and convert AUD→USD once.</span>
+  </div>
+
+  <h2>Phase 0 · 开始前 / Reality check &amp; what to gather</h2>
+  <div class="zh"><ul>
+    <li>你买的是<strong>二级市场</strong>（约 161 美元），不是打新。上市第二天，盘中波动会很大。</li>
+    <li>提前准备好：澳洲驾照或护照、<strong>TFN（税号）</strong>、住址、<strong>本人名下</strong>的银行账户、约 15–30 分钟 + 手机（验证 + 双重认证）。</li>
+  </ul></div>
+  <div class="en"><ul>
+    <li>You're buying the <strong>secondary market</strong> (~US$161), not the IPO. Day-2 of a hot listing → expect big intraday swings.</li>
+    <li>Gather first: Australian driver licence or passport, your <strong>TFN</strong>, address, a bank account <strong>in your own name</strong>, ~15–30 min + your phone (ID check + 2FA).</li>
+  </ul></div>
+
+  <h2>Phase 1 · 选券商 / Choose your broker</h2>
+  <div class="zh"><p>对于<strong>一次性 1 万澳元</strong>，换汇费远大于佣金。下表为参考（请核对实时费率）：</p></div>
+  <div class="en"><p>For a <strong>one-off A$10k</strong>, the FX fee dwarfs commission. Representative (verify current rates):</p></div>
+  <table>
+    <tr>
+      <th><span class="zh">券商</span><span class="en">Broker</span></th>
+      <th><span class="zh">美股佣金</span><span class="en">Commission</span></th>
+      <th><span class="zh">换汇费</span><span class="en">FX fee</span></th>
+      <th><span class="zh">适合</span><span class="en">Best for</span></th>
+    </tr>
+    <tr>
+      <td><strong>Interactive Brokers</strong></td>
+      <td>~$0.0035/<span class="zh">股</span><span class="en">sh</span>, min ~$0.35</td>
+      <td><strong>~0.002%, min US$2</strong></td>
+      <td><span class="zh">成本最低，界面较复杂</span><span class="en">Lowest cost; busier UI</span></td>
+    </tr>
+    <tr>
+      <td><strong>moomoo AU</strong></td>
+      <td>~US$0.99 + <span class="zh">平台费</span><span class="en">platform fee</span></td>
+      <td><span class="zh">点差有竞争力(~0.3%)</span><span class="en">competitive (~0.3%)</span></td>
+      <td><span class="zh">App 好用，成本居中</span><span class="en">Great app, mid cost</span></td>
+    </tr>
+    <tr>
+      <td><strong>Stake</strong></td>
+      <td>US$3 (≤$30k)</td>
+      <td>~0.5–0.7%</td>
+      <td><span class="zh">最简单易用</span><span class="en">Simplest UX</span></td>
+    </tr>
+    <tr>
+      <td>CommSec Intl</td>
+      <td>~US$19.95 / 0.31%</td>
+      <td>~0.6%+</td>
+      <td><span class="zh">大行安心，最贵</span><span class="en">Big-bank, priciest</span></td>
+    </tr>
+  </table>
+  <div class="zh"><p><strong>建议：</strong>能接受稍复杂界面就选 <strong>IBKR</strong>——1 万澳元上总费用约 A$3，而 Stake 约 A$70+，差别几乎全在换汇。想要最省心就选 <strong>moomoo</strong>。（Webull、Tiger、Superhero、Sharesies 也行，但 1 万澳元关键看换汇 %。）所有券商都要持有 <strong>ASIC AFSL</strong> 牌照。</p></div>
+  <div class="en"><p><strong>Recommendation:</strong> if you can tolerate a busier interface, <strong>IBKR</strong> — ~A$3 total fees on A$10k vs ~A$70+ on Stake, almost all the difference being FX. For the easiest experience, <strong>moomoo</strong>. (Webull, Tiger, Superhero, Sharesies also work — but on $10k the FX % is what matters.) Make sure the broker holds an <strong>ASIC AFSL</strong>.</p></div>
+  <div class="insight">
+    <p class="zh"><strong>为什么换汇是大头：</strong>佣金只是几美元；0.7% 的换汇费在 1 万澳元上约 A$70，而且是<strong>每个方向</strong>。IBKR 给接近银行间汇率（最低 US$2），一次性买入能省 A$60–130 来回。</p>
+    <p class="en"><strong>Why FX dominates:</strong> brokerage is a few dollars; a 0.7% FX fee on A$10k is ~A$70 — <strong>each way</strong>. IBKR gives near-interbank FX (min US$2), saving ~A$60–130 round-trip on a lump sum.</p>
+  </div>
+
+  <h2>Phase 2 · 开户与验证 / Open &amp; verify the account</h2>
+  <div class="zh"><ol>
+    <li>下载 App 或网页注册，选<strong>个人账户</strong>。</li>
+    <li>填个人信息 + <strong>TFN</strong>。</li>
+    <li>上传 ID，做<strong>人脸活体</strong>验证（几分钟到 1 个工作日）。</li>
+    <li><strong>签 W-8BEN 表</strong>（App 内勾选/电子签）——证明你是澳洲居民，美股股息预扣税从 30% 降到 15%（SPCX 不分红，但留档）。有效期约 3 年。</li>
+    <li>开启<strong>双重认证（2FA）</strong>。</li>
+  </ol></div>
+  <div class="en"><ol>
+    <li>Sign up on app/web; choose an <strong>Individual</strong> account.</li>
+    <li>Enter personal details + your <strong>TFN</strong>.</li>
+    <li>Upload ID; do the <strong>liveness/selfie</strong> check (minutes to ~1 business day).</li>
+    <li><strong>Sign the W-8BEN</strong> (in-app e-sign) — certifies AU residency so US dividend withholding is 15% not 30% (SPCX pays none, but keep it on file). Valid ~3 years.</li>
+    <li>Turn on <strong>2-factor authentication</strong>.</li>
+  </ol></div>
+
+  <h2>Phase 3 · 入金（澳元）/ Fund in AUD</h2>
+  <div class="zh"><ul>
+    <li>用 <strong>PayID/Osko</strong>（近乎即时）或<strong>银行转账</strong>（BSB + 账号，0–1 天）。</li>
+    <li>只能用<strong>本人名下</strong>的银行账户入金（反洗钱），第三方入金会被退回。</li>
+    <li>存入 1 万澳元（或第一笔，见 Phase 7）。</li>
+  </ul></div>
+  <div class="en"><ul>
+    <li>Use <strong>PayID/Osko</strong> (near-instant) or <strong>bank transfer</strong> (BSB + account, 0–1 day).</li>
+    <li>Fund only from a bank account <strong>in your own name</strong> — third-party deposits get rejected (AML).</li>
+    <li>Deposit A$10,000 (or your first tranche — see Phase 7).</li>
+  </ul></div>
+
+  <h2>Phase 4 · 换汇 A$→US$ / Convert AUD to USD</h2>
+  <div class="zh"><ul>
+    <li>美股以<strong>美元</strong>结算，所以澳元要换成美元。</li>
+    <li><strong>手动换汇</strong>（IBKR）：下一笔 <code>AUD.USD</code> 兑换，接近现汇、最低约 US$2。<strong>一次性全换。</strong></li>
+    <li><strong>自动换汇</strong>（Stake/moomoo/CommSec）：入金或下单时按其点差换。</li>
+    <li><strong>技巧：</strong>把全部澳元<strong>一次换成美元</strong>，再用美元余额分批买——这样换汇成本只付一次。</li>
+    <li>记下换汇时的 <strong>AUD/USD 汇率</strong>，报税算成本要用。</li>
+  </ul></div>
+  <div class="en"><ul>
+    <li>US shares settle in <strong>USD</strong>, so your AUD must become USD.</li>
+    <li><strong>Manual FX</strong> (IBKR): place an <code>AUD.USD</code> conversion — near-spot, min ~US$2. <strong>Convert the whole amount once.</strong></li>
+    <li><strong>Auto-convert</strong> (Stake/moomoo/CommSec): converted at funding or trade time at their FX spread.</li>
+    <li><strong>Tactic:</strong> convert the <strong>full amount to USD once</strong>, then buy in tranches from the USD balance — pay FX a single time.</li>
+    <li>Note the <strong>AUD/USD rate</strong> at conversion; you need it for your tax cost base.</li>
+  </ul></div>
+
+  <h2>Phase 5 · 下单买入 / Place the order</h2>
+  <div class="zh"><p><strong>悉尼时间（6 月 = AEST，美国 EDT）：</strong>美股常规交易时段约 <strong>晚 11:30 – 早 6:00（悉尼）</strong>。不用熬夜——白天挂一个限价单等开盘即可。</p></div>
+  <div class="en"><p><strong>Sydney timing (June = AEST, US on EDT):</strong> the US regular session runs roughly <strong>11:30pm–6:00am Sydney time</strong>. No need to stay up — queue a limit order during the day.</p></div>
+  <table>
+    <tr><th><span class="zh">美国时段 (EDT)</span><span class="en">US session (EDT)</span></th><th><span class="zh">悉尼 (AEST)</span><span class="en">Sydney (AEST)</span></th></tr>
+    <tr><td><span class="zh">开盘 9:30am</span><span class="en">Open 9:30am</span></td><td><strong>11:30pm</strong></td></tr>
+    <tr><td><span class="zh">收盘 4:00pm</span><span class="en">Close 4:00pm</span></td><td><strong>6:00am</strong> <span class="zh">(次日)</span><span class="en">(next day)</span></td></tr>
+  </table>
+  <div class="zh"><p><strong>下单步骤（各券商逻辑一致）：</strong></p>
+    <ol>
+      <li>搜代码 <code>SPCX</code> → 确认是 <em>Space Exploration Technologies, Nasdaq</em>（别买到山寨）。</li>
+      <li>点 <strong>买入 Buy</strong>。</li>
+      <li>订单类型选 <strong><code>限价 Limit</code></strong>（绝不用市价）。</li>
+      <li><strong>限价：</strong>设你愿付的最高价。看当前报价，设在卖价(ask)或略高（如报 $160.80/$161.20，限价 ~$161.50 能快速成交又不追高）。</li>
+      <li><strong>数量：</strong>填股数或金额（IBKR/Stake/moomoo 支持<strong>碎股</strong>，可把钱全用上）。</li>
+      <li><strong>有效期：</strong><code>当日 Day</code> 或 <code>GTC</code>（长期有效）。挂夜单选 GTC 或下一时段的 Day 单。</li>
+      <li><strong>关掉盘前/盘后</strong>，除非你很清楚——夜间流动性差、价差大。</li>
+      <li>核对<strong>预估费用</strong> → 提交。价格触及即成交。</li>
+    </ol></div>
+  <div class="en"><p><strong>Order steps (same logic on any broker):</strong></p>
+    <ol>
+      <li>Search ticker <code>SPCX</code> → confirm it's <em>Space Exploration Technologies, Nasdaq</em> (not a lookalike).</li>
+      <li>Tap <strong>Buy</strong>.</li>
+      <li>Order type → <strong><code>Limit</code></strong> (never Market).</li>
+      <li><strong>Limit price:</strong> the max you'll pay. Check the quote and set at/just above the ask (e.g. quote $160.80/$161.20 → limit ~$161.50 fills fast without chasing).</li>
+      <li><strong>Quantity:</strong> shares or a dollar amount (IBKR/Stake/moomoo support <strong>fractional shares</strong>, so deploy the full amount).</li>
+      <li><strong>Time-in-force:</strong> <code>Day</code> or <code>GTC</code> (good-til-cancelled). To queue overnight use GTC or a Day order for the next session.</li>
+      <li><strong>Leave extended-hours OFF</strong> unless experienced — overnight liquidity is thin, spreads wide.</li>
+      <li>Review <strong>estimated fees</strong> → submit. It fills when the price trades.</li>
+    </ol></div>
+  <div class="insight">
+    <p class="zh"><strong>为什么别用市价单：</strong>市价单按「下一个价格」成交；在波动剧烈、价差大的次日新股上，可能远高于屏幕价（滑点）。<strong>限价单</strong>锁定上限——最坏只是没成交，可以重挂。</p>
+    <p class="en"><strong>Why never a market order:</strong> it buys at whatever the next price is; on a volatile day-2 IPO with wide spreads it can fill far above the screen price (slippage). A <strong>limit order</strong> caps your price — worst case it just doesn't fill.</p>
+  </div>
+
+  <h2>Phase 6 · 成交之后 / After the trade</h2>
+  <div class="zh"><ul>
+    <li><strong>交割 T+1</strong>（一个美国工作日）。</li>
+    <li><strong>托管：</strong>美股通过券商的<strong>美国托管行</strong>持有，<strong>没有 CHESS HIN</strong>（不像 ASX）。你是受益所有人；美国端有 <strong>SIPC</strong> 保护至 US$50 万（防券商倒闭，不防股价下跌）。</li>
+    <li><strong>保存成交单/交易确认（PDF）</strong>——报税要用。</li>
+  </ul></div>
+  <div class="en"><ul>
+    <li><strong>Settlement: T+1</strong> (one US business day).</li>
+    <li><strong>Custody:</strong> US shares are held via the broker's <strong>US custodian</strong> — <strong>no CHESS HIN</strong> like ASX. You're the beneficial owner; the US side has <strong>SIPC</strong> protection to US$500k (against broker failure, not price falls).</li>
+    <li><strong>Save the contract note / trade confirmation (PDF)</strong> — you need it for the ATO.</li>
+  </ul></div>
+
+  <h2>Phase 7 · 1 万澳元的分批计划 / Staggered plan for A$10,000</h2>
+  <div class="zh"><ol>
+    <li>把全部 <strong>A$10,000 一次换成美元</strong>（约 US$6,500 @ 0.65，查实时）。</li>
+    <li><strong>第一批 ~A$3,500</strong>（~14 股）现在限价买。</li>
+    <li><strong>第二批 ~A$3,500</strong>，在首份财报/波动平稳后或回调时。</li>
+    <li><strong>第三批 ~A$3,000</strong>，更晚（如解禁回调时，或简单地间隔几周）。</li>
+    <li>每次都是用美元余额再挂一个限价单——佣金几美元，无需再换汇。</li>
+  </ol></div>
+  <div class="en"><ol>
+    <li>Convert the <strong>full A$10,000 → USD once</strong> (~US$6,500 @ 0.65; check live).</li>
+    <li><strong>Tranche 1 — ~A$3,500</strong> (~14 shares) now, with a limit order.</li>
+    <li><strong>Tranche 2 — ~A$3,500</strong> after the first earnings/volatility settles or on a pullback.</li>
+    <li><strong>Tranche 3 — ~A$3,000</strong> later (e.g. around a lock-up dip, or simply spaced weeks apart).</li>
+    <li>Each buy is another limit order from your USD cash — a few dollars brokerage, no extra FX.</li>
+  </ol></div>
+
+  <h2>Phase 8 · 税务与记录 / Tax &amp; records (Australia)</h2>
+  <div class="zh"><ul>
+    <li><strong>W-8BEN</strong>——Phase 2 已签（股息预扣 15%；SPCX 不分红）。</li>
+    <li><strong>资本利得税 CGT：</strong>卖出在澳洲征税；<strong>持有满 12 个月享 50% 折扣</strong>。用买卖当日汇率把成本与收益换算成澳元。</li>
+    <li>海外股票<strong>无 franking credit</strong>。</li>
+    <li><strong>记录：</strong>保存买卖成交单 + 汇率。券商提供<strong>年度报表</strong>（多数有 ATO 友好的税务报告）。澳洲税年 6 月 30 日结束。</li>
+    <li><strong>美国遗产税：</strong>美股属「美国资产」，非居民门槛 US$6 万——1 万澳元远低于此；若日后美股持仓超过约 US$6 万，澳美税收协定会提高门槛。</li>
+  </ul></div>
+  <div class="en"><ul>
+    <li><strong>W-8BEN</strong> — done in Phase 2 (15% dividend withholding; SPCX pays none).</li>
+    <li><strong>CGT:</strong> taxable in Australia on sale; <strong>50% discount if held &gt;12 months</strong>. Convert cost base and proceeds to AUD at each date's rate.</li>
+    <li><strong>No franking credits</strong> on foreign shares.</li>
+    <li><strong>Records:</strong> keep buy/sell notes + FX rates. Your broker issues an <strong>annual statement</strong> (often an ATO-friendly tax report). The Australian tax year ends 30 June.</li>
+    <li><strong>US estate tax:</strong> US shares are "US-situs", US$60k non-resident threshold — irrelevant at A$10k; the AU–US treaty lifts it if you later exceed ~US$60k.</li>
+  </ul></div>
+
+  <h2>成本实例 / Worked cost example</h2>
+  <div class="zh"><p>假设 AUD/USD = 0.65，A$10,000 ≈ US$6,500（请查实时汇率）：</p></div>
+  <div class="en"><p>Assuming AUD/USD = 0.65, A$10,000 ≈ US$6,500 (check the live rate):</p></div>
+  <table>
+    <tr>
+      <th><span class="zh">券商</span><span class="en">Broker</span></th>
+      <th class="num"><span class="zh">换汇费</span><span class="en">FX cost</span></th>
+      <th class="num"><span class="zh">佣金</span><span class="en">Brokerage</span></th>
+      <th class="num"><span class="zh">总成本</span><span class="en">Total cost</span></th>
+      <th class="num"><span class="zh">约买入</span><span class="en">~Shares</span></th>
+    </tr>
+    <tr><td>IBKR</td><td class="num">~US$2</td><td class="num">~US$0.35</td><td class="num pos">~US$2 (A$3)</td><td class="num">~40</td></tr>
+    <tr><td>moomoo</td><td class="num">~US$19</td><td class="num">~US$2</td><td class="num">~US$21 (A$32)</td><td class="num">~40</td></tr>
+    <tr><td>Stake</td><td class="num">~US$45</td><td class="num">US$3</td><td class="num neg">~US$48 (A$74)</td><td class="num">~40</td></tr>
+  </table>
+
+  <h2>常见坑 / Pitfalls to avoid ⚠️</h2>
+  <div class="zh"><ul>
+    <li>❌ 波动新股用<strong>市价单</strong> → 滑点。永远用限价。</li>
+    <li>❌ 来回换汇<strong>两次付费</strong> —— 一次换好，持有美元。</li>
+    <li>❌ 在<strong>稀薄的盘前/夜盘</strong>交易 —— 价差大。用常规时段或挂限价。</li>
+    <li>❌ 追涨杀跌 FOMO —— 已经涨了 19%，让限价单帮你守纪律。</li>
+    <li>❌ <strong>第三方入金</strong> —— 只用本人名下账户。</li>
+    <li>❌ 任何「pre-IPO / 打折 SpaceX / SPV 份额」 —— 骗局。只买上市代码 <strong>SPCX</strong>。</li>
+  </ul></div>
+  <div class="en"><ul>
+    <li>❌ <strong>Market orders</strong> on a volatile IPO → slippage. Always limit.</li>
+    <li>❌ <strong>Paying FX twice</strong> by converting back and forth — convert once, hold USD.</li>
+    <li>❌ Trading the <strong>thin pre-market/overnight</strong> — wide spreads. Use the regular session or queue a limit.</li>
+    <li>❌ FOMO chasing green candles — it's up 19%; let your limit enforce discipline.</li>
+    <li>❌ <strong>Third-party deposits</strong> — fund only from your own-name account.</li>
+    <li>❌ Any "pre-IPO / discounted SpaceX / SPV" offer — scam. Only the listed <strong>SPCX</strong> ticker.</li>
+  </ul></div>
+
+  <h2>一眼清单 / One-glance checklist ✅</h2>
+  <div class="zh"><ol>
+    <li>选券商（IBKR = 最省钱；moomoo = 最易用）</li>
+    <li>开户 + <strong>TFN</strong> + <strong>W-8BEN</strong> + 2FA</li>
+    <li>用本人账户入金澳元</li>
+    <li><strong>A$10k → US$ 一次换好</strong></li>
+    <li>搜 <code>SPCX</code> → 买入 → 限价 → GTC</li>
+    <li><strong>分 3 批</strong>买，别一次梭哈</li>
+    <li>保存成交单；记住 <strong>满 12 个月</strong> CGT 折扣</li>
+    <li>绝不用市价单；绝不碰「pre-IPO」</li>
+  </ol></div>
+  <div class="en"><ol>
+    <li>Pick a broker (IBKR = cheapest; moomoo = easiest)</li>
+    <li>Open account + <strong>TFN</strong> + <strong>W-8BEN</strong> + 2FA</li>
+    <li>Fund AUD from your own-name account</li>
+    <li><strong>Convert A$10k → US$ once</strong></li>
+    <li>Search <code>SPCX</code> → Buy → Limit → GTC</li>
+    <li>Buy in <strong>3 tranches</strong>, not all at once</li>
+    <li>Save contract notes; remember the <strong>&gt;12-month</strong> CGT discount</li>
+    <li>Never market orders; never "pre-IPO" offers</li>
+  </ol></div>
+
+  <div class="foot">
+    <span class="zh">个人操作指南，编制于 2026 年 6 月。费率/时段可能变动，请以券商实时信息为准。本文为一般信息，非个人投资建议。投资有风险。</span>
+    <span class="en">Personal how-to guide compiled Jun 2026. Fees/hours can change — verify with your broker. General information, not personal financial advice. Investing carries risk.</span>
+  </div>
+
+</div>
+
+<script>
+  function setLang(m){
+    document.body.className = 'show-' + m;
+    var btns = document.querySelectorAll('.langbar button');
+    for (var i=0;i<btns.length;i++){ btns[i].classList.toggle('active', btns[i].getAttribute('data-m')===m); }
+    try{ localStorage.setItem('spcxLang', m); }catch(e){}
+  }
+  document.querySelectorAll('.langbar button').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-m')); });
+  });
+  var saved = 'both';
+  try{ saved = localStorage.getItem('spcxLang') || 'both'; }catch(e){}
+  setLang(saved);
+</script>
+</body>
+</html>
