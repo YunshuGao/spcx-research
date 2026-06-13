@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPCX · SpaceX IPO research dashboard</title>
+<meta name="description" content="Self-contained research snapshot of the SpaceX (SPCX) Nasdaq IPO for an Australian investor — financials, valuation, risks, lock-up schedule and how to buy. General information, not financial advice.">
+<style>
+  :root{
+    --bg:#ffffff; --surface:#f6f5f1; --card:#ffffff; --text:#1b1b19; --muted:#5f5e5a; --hint:#8a8980;
+    --border:rgba(0,0,0,.12); --border2:rgba(0,0,0,.22);
+    --info:#0c447c; --info-bg:#e6f1fb; --success:#0f6e56; --success-bg:#e1f5ee;
+    --danger:#a32d2d; --danger-bg:#fcebeb; --warn:#854f0b; --warn-bg:#faeeda;
+    --teal:#1d9e75; --gray:#888780; --red:#e24b4a;
+    --radius:12px; --radius-sm:8px;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#1c1b19; --surface:#26251f; --card:#222019; --text:#ece9e2; --muted:#b4b2a9; --hint:#888780;
+      --border:rgba(255,255,255,.14); --border2:rgba(255,255,255,.26);
+      --info:#85b7eb; --info-bg:#0c447c; --success:#5dcaa5; --success-bg:#0f6e56;
+      --danger:#f09595; --danger-bg:#791f1f; --warn:#fac775; --warn-bg:#633806;
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;font-size:16px}
+  .wrap{max-width:940px;margin:0 auto;padding:28px 20px 64px}
+  a{color:var(--info);text-decoration:none}
+  a:hover{text-decoration:underline}
+  h1{font-size:26px;font-weight:600;margin:0}
+  h2{font-size:19px;font-weight:600;margin:36px 0 14px}
+  h3{font-size:15px;font-weight:600;margin:0 0 10px}
+  p{margin:0 0 12px}
+  .sub{color:var(--muted);font-size:14px}
+  .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .between{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  .chip{font-size:12px;padding:3px 10px;border-radius:999px;font-weight:500}
+  .chip.up{background:var(--success-bg);color:var(--success)}
+  .chip.warn{background:var(--warn-bg);color:var(--warn)}
+  .banner{background:var(--warn-bg);color:var(--warn);border-radius:var(--radius);padding:12px 16px;font-size:13.5px;margin:18px 0 4px}
+  .grid{display:grid;gap:12px}
+  .metrics{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:20px}
+  .metric{background:var(--surface);border-radius:var(--radius-sm);padding:14px 16px}
+  .metric .l{font-size:12.5px;color:var(--muted)}
+  .metric .v{font-size:24px;font-weight:600;margin-top:2px}
+  .v.neg{color:var(--danger)} .v.pos{color:var(--success)}
+  .cards2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px}
+  .card ul{margin:0;padding-left:18px} .card li{margin:6px 0;font-size:14.5px}
+  .acc-up{color:var(--success)} .acc-dn{color:var(--danger)}
+  .chartbox{position:relative;width:100%;height:230px}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12.5px;color:var(--muted);margin:6px 0 10px}
+  .legend span{display:flex;align-items:center;gap:5px}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:6px 0 4px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+  th{color:var(--muted);font-weight:500;font-size:12.5px}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .timeline{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+  .step{flex:1;min-width:96px;background:var(--surface);border-radius:var(--radius-sm);padding:10px 12px}
+  .step .t{font-size:12px;color:var(--muted)} .step .b{font-size:13.5px;font-weight:600;margin-top:2px}
+  .steps{counter-reset:s;display:flex;flex-direction:column;gap:10px}
+  .steps li{list-style:none;display:flex;gap:12px;font-size:14.5px}
+  .steps li::before{counter-increment:s;content:counter(s);flex:none;width:24px;height:24px;border-radius:50%;background:var(--info-bg);color:var(--info);display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600}
+  .foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--border);font-size:12.5px;color:var(--hint)}
+  .twocol{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+  ul.tight{margin:0;padding-left:18px} ul.tight li{margin:5px 0;font-size:14.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="between">
+    <div>
+      <h1>SPCX · SpaceX</h1>
+      <div class="sub">Space Exploration Technologies Corp · Nasdaq · research snapshot, 13 Jun 2026</div>
+    </div>
+    <div class="row">
+      <span class="sub">IPO&nbsp;$135</span><span class="sub">→</span>
+      <span style="font-size:20px;font-weight:600">$161</span>
+      <span class="chip up">+19% day 1</span>
+    </div>
+  </div>
+
+  <div class="banner">General information only — not personal financial advice. The only legitimate way to own SpaceX is the listed <strong>SPCX</strong> ticker via a regulated broker. Ignore any "discounted pre-IPO SpaceX" offer.</div>
+
+  <div class="grid metrics">
+    <div class="metric"><div class="l">Market cap (IPO)</div><div class="v">≈$1.77T</div></div>
+    <div class="metric"><div class="l">Price / sales</div><div class="v">≈95×</div></div>
+    <div class="metric"><div class="l">FY25 revenue (+33%)</div><div class="v">$18.7B</div></div>
+    <div class="metric"><div class="l">FY25 net loss</div><div class="v neg">−$4.9B</div></div>
+    <div class="metric"><div class="l">Post-IPO cash</div><div class="v">≈$90B</div></div>
+    <div class="metric"><div class="l">Total debt</div><div class="v">$29.1B</div></div>
+    <div class="metric"><div class="l">Musk voting power</div><div class="v">82.4%</div></div>
+    <div class="metric"><div class="l">Starlink subscribers</div><div class="v">10.3M</div></div>
+  </div>
+
+  <h2>Starlink profits feed the AI furnace</h2>
+  <p class="sub">FY2025 operating income by segment (US$ billions). Starlink's profit is being poured into xAI's losses.</p>
+  <div class="legend">
+    <span><span class="dot" style="background:#1d9e75"></span>Starlink +$4.4B</span>
+    <span><span class="dot" style="background:#888780"></span>Space −$0.7B</span>
+    <span><span class="dot" style="background:#e24b4a"></span>AI (xAI/X) −$6.4B</span>
+  </div>
+  <div class="chartbox"><canvas id="seg" role="img" aria-label="FY2025 operating income by segment: Starlink positive 4.4 billion, Space negative 0.7 billion, AI negative 6.4 billion US dollars."></canvas></div>
+
+  <h2>What you're actually buying</h2>
+  <p>Not just rockets. In a chain of common-control deals, <strong>xAI acquired X/Twitter</strong> (Mar 2025), then <strong>SpaceX acquired xAI</strong> (Feb 2026). One SPCX share now = launch (Falcon/Starship/Dragon) + Starlink + xAI/Grok + the X platform — restated together in the prospectus.</p>
+
+  <h2>The numbers (from the S-1/A#2 prospectus)</h2>
+  <table>
+    <tr><th>US$ millions</th><th class="num">Q1 2026</th><th class="num">FY2025</th><th class="num">FY2024</th><th class="num">FY2023</th></tr>
+    <tr><td>Revenue</td><td class="num">4,694</td><td class="num">18,674</td><td class="num">14,015</td><td class="num">10,387</td></tr>
+    <tr><td>Operating income (loss)</td><td class="num">(1,943)</td><td class="num">(2,589)</td><td class="num">466</td><td class="num">(3,505)</td></tr>
+    <tr><td>Net income (loss)</td><td class="num">(4,276)</td><td class="num">(4,937)</td><td class="num">791</td><td class="num">(4,628)</td></tr>
+  </table>
+  <table>
+    <tr><th>FY2025 segment</th><th class="num">Revenue</th><th class="num">Operating income</th><th class="num">Capex</th></tr>
+    <tr><td>Space (Falcon/Starship)</td><td class="num">4,086</td><td class="num">(657)</td><td class="num">3,832</td></tr>
+    <tr><td>Connectivity (Starlink)</td><td class="num">11,387</td><td class="num">+4,423</td><td class="num">4,178</td></tr>
+    <tr><td>AI (xAI/X)</td><td class="num">3,201</td><td class="num">(6,355)</td><td class="num">12,727</td></tr>
+  </table>
+  <p class="sub">Balance sheet (31 Mar 2026, pro-forma for the raise): cash ≈$90.3B · total debt $29.1B (incl. $20B bridge due Sep 2027) · accumulated deficit $(41.3)B · net proceeds ≈$74.4B, all primary.</p>
+
+  <h2>Bull vs bear</h2>
+  <div class="grid cards2">
+    <div class="card">
+      <h3 class="acc-up">Bull case</h3>
+      <ul>
+        <li>Starlink: only global LEO broadband at scale, profitable (+$4.4B), +50% growth</li>
+        <li>~80% of world's mass to orbit; Starship reusability optionality</li>
+        <li>Frontier AI (Grok) + ≈$90B cash war chest</li>
+        <li>Oppenheimer: outperform, $190 target (~+18%)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="acc-dn">Bear case</h3>
+      <ul>
+        <li>≈95× sales, loss-making (−$4.9B FY25); AI burned $12.7B capex</li>
+        <li>Starlink ARPU falling: $99 → $91 → $81</li>
+        <li>Musk 82.4% votes, part-time, no key-man insurance</li>
+        <li>Lock-up cascade over ~12 months; Chanos calls it "hopes and dreams"</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Valuation, dilution & ownership</h2>
+  <div class="twocol">
+    <div class="card">
+      <h3>What your $135 buys</h3>
+      <ul class="tight">
+        <li>Net tangible book value after IPO: <strong>$7.85/share</strong></li>
+        <li>Immediate dilution: <strong>$127.15/share</strong> (≈94%)</li>
+        <li>Trading at ≈95× trailing sales (≈155× on Starlink revenue alone)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Who owns it</h3>
+      <ul class="tight">
+        <li>Musk: ~46% of equity but <strong>82.4% of votes</strong> (Class B = 10 votes/share)</li>
+        <li>New IPO investors: <strong>4.2%</strong> of the company for 48% of all capital ever invested</li>
+        <li>Insiders' average cost: <strong>$6.48</strong> vs your $135 · "controlled company"</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Lock-up supply cascade</h2>
+  <p class="sub">Float is tiny now (~556M Class A) but multiplies over ~12 months as locked shares release — a structural headwind.</p>
+  <div class="timeline">
+    <div class="step"><div class="t">Now</div><div class="b">~556M float</div></div>
+    <div class="step"><div class="t">Q2 earnings</div><div class="b">+20% unlock</div></div>
+    <div class="step"><div class="t">If ≥$175.50</div><div class="b">+10% early</div></div>
+    <div class="step"><div class="t">Q3 earnings</div><div class="b">+28% unlock</div></div>
+    <div class="step"><div class="t">Day 366</div><div class="b">Musk ~6.4B</div></div>
+  </div>
+
+  <h2>How to buy from Sydney</h2>
+  <p class="sub">A$10,000 ≈ US$6,500 ≈ ~40 shares at $161 (check the live AUD/USD rate).</p>
+  <ol class="steps">
+    <li>Open an ASIC-regulated broker — IBKR (cheapest FX), Stake or moomoo</li>
+    <li>Sign the W-8BEN form and add your TFN</li>
+    <li>Convert A$ → US$ — the FX spread is the real cost on $10k</li>
+    <li>Buy ticker SPCX with a <strong>limit order</strong> (never market); consider staggering your entry</li>
+    <li>Settles T+1, held via a US custodian — keep contract notes for the ATO</li>
+  </ol>
+  <table>
+    <tr><th>Broker</th><th>US brokerage</th><th>AUD→USD FX</th></tr>
+    <tr><td>Interactive Brokers</td><td>~$0.0035/share (min ~$0.35)</td><td>~0.002% (min US$2) — cheapest</td></tr>
+    <tr><td>moomoo AU</td><td>~US$0.99/order</td><td>Competitive spread</td></tr>
+    <tr><td>Stake</td><td>US$3 flat (≤$30k)</td><td>~0.5–0.7%</td></tr>
+  </table>
+  <p class="sub">Tax: W-8BEN cuts US dividend withholding 30%→15% (SPCX pays no dividend); Australian CGT applies with the 50% discount after 12 months; no franking credits; US estate-tax $60k threshold is irrelevant at A$10k (and the AU–US treaty lifts it).</p>
+
+  <h2>Key risks (from the prospectus)</h2>
+  <ul class="tight">
+    <li><strong>Starship</strong> delays/failures — the #1 listed risk; the whole growth story depends on it</li>
+    <li><strong>Key-man:</strong> total dependence on Musk; he doesn't work full-time; no key-person insurance</li>
+    <li><strong>Governance:</strong> Class A holders have ~no power; charter renounces corporate opportunities; mandatory arbitration</li>
+    <li><strong>Related parties:</strong> undefined-terms Tesla deals (Terafab, Macrohard); $60B Cursor option</li>
+    <li><strong>Competition:</strong> Amazon Kuiper, Blue Origin, Chinese constellations; OpenAI/Google in AI</li>
+    <li><strong>Unproven bets:</strong> orbital AI compute (2028+), lunar economy, Mars — priced in today</li>
+    <li><strong>Currency:</strong> unhedged AUD/USD — a rising AUD erodes your return even if SPCX rises</li>
+  </ul>
+
+  <h2>Analyst & expert views</h2>
+  <ul class="tight">
+    <li>Oppenheimer — <strong>outperform, $190 target</strong> (bull anchor, ~+18% from the $161 close)</li>
+    <li>Jim Chanos — calls the $1.75T valuation <strong>"hopes and dreams"</strong> (bear)</li>
+    <li>Jim Cramer — called the debut <strong>"unsustainable"</strong> (the "$5T day one" line is unverified hype)</li>
+    <li>Retail IPO allocation was trimmed to the low-20s% before pricing</li>
+  </ul>
+
+  <h2>Sources</h2>
+  <ul class="tight">
+    <li><a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/spaceexplorationtechnologi.htm">SpaceX S-1 / S-1/A prospectus — SEC EDGAR (CIK 1181412)</a></li>
+    <li><a href="https://www.cnbc.com/2026/06/12/spacex-ipo-spcx-live-updates.html">CNBC — SPCX closes $161 (+19%)</a> · <a href="https://www.npr.org/2026/06/11/nx-s1-5853199/spacex-ipo-price-elon-musk">NPR — record $75B IPO</a></li>
+    <li><a href="https://fortune.com/2026/06/12/spacex-ipo-when-trading-starts-some-shareholders-will-discover-they-own-nothing-at-all/">Fortune — "some shareholders own nothing"</a> · <a href="https://techcrunch.com/2026/06/11/spacex-spv-investors-wont-know-their-true-holdings-until-post-ipo-lock-ups-lift/">TechCrunch — SPV holdings unknown until lock-ups lift</a></li>
+    <li><a href="https://www.morningstar.com/stocks/6-charts-spacexs-s-1-financials">Morningstar — S-1 financials</a> · <a href="https://www.fool.com/investing/2026/05/26/the-spacex-ipo-has-an-unusual-lockup-policy-for-in/">Motley Fool — unusual lock-up</a></li>
+    <li><a href="https://finance.yahoo.com/markets/stocks/article/oppenheimer-slaps-outperform-rating-on-spacex-190-price-target-ahead-of-market-debut-163237327.html">Oppenheimer $190 target</a> · <a href="https://www.finder.com.au/news/spacex-where-to-buy">finder.com.au — buying in Australia</a> · <a href="https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/investor-48">SEC — pre-IPO scam alert</a></li>
+  </ul>
+
+  <div class="foot">
+    Personal research snapshot compiled 13 Jun 2026 from the SpaceX S-1/A#2 prospectus and public reporting. Figures are point-in-time and may be out of date. Nothing here is personal financial advice or a recommendation to buy or sell. Do your own research and consider licensed advice.
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+(function(){
+  var isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+  var tick = isDark ? '#b4b2a9' : '#5f5e5a';
+  var grid = isDark ? 'rgba(255,255,255,0.10)' : 'rgba(0,0,0,0.08)';
+  new Chart(document.getElementById('seg'), {
+    type:'bar',
+    data:{ labels:['Starlink','Space','AI (xAI/X)'],
+      datasets:[{ data:[4.4,-0.7,-6.4], backgroundColor:['#1d9e75','#888780','#e24b4a'], borderRadius:4, barThickness:48 }] },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:function(c){ var v=c.parsed.y; return (v<0?'-':'+')+'$'+Math.abs(v)+'B'; } } } },
+      scales:{ x:{ grid:{display:false}, ticks:{ color:tick, font:{size:12} } },
+        y:{ suggestedMin:-7, suggestedMax:5, grid:{ color:grid }, ticks:{ color:tick, font:{size:12}, callback:function(v){ return (v<0?'-':'')+'$'+Math.abs(v)+'B'; } } } } }
+  });
+})();
+</script>
+</body>
+</html>
