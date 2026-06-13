@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPCX · 中英双语深度解读 / Bilingual deep-dive</title>
+<meta name="description" content="SpaceX (SPCX) IPO 中英双语深度解读 — 财务、估值、风险、禁售期与如何买入。一般信息，非投资建议。">
+<style>
+  :root{
+    --bg:#ffffff; --surface:#f6f5f1; --card:#ffffff; --text:#1b1b19; --muted:#5f5e5a; --hint:#8a8980;
+    --border:rgba(0,0,0,.12); --border2:rgba(0,0,0,.22);
+    --info:#0c447c; --info-bg:#e6f1fb; --success:#0f6e56; --success-bg:#e1f5ee;
+    --danger:#a32d2d; --danger-bg:#fcebeb; --warn:#854f0b; --warn-bg:#faeeda;
+    --radius:12px; --radius-sm:8px;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#1c1b19; --surface:#26251f; --card:#222019; --text:#ece9e2; --muted:#b4b2a9; --hint:#888780;
+      --border:rgba(255,255,255,.14); --border2:rgba(255,255,255,.26);
+      --info:#85b7eb; --info-bg:#0c447c; --success:#5dcaa5; --success-bg:#0f6e56;
+      --danger:#f09595; --danger-bg:#791f1f; --warn:#fac775; --warn-bg:#633806;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.7;font-size:16px}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 64px}
+  a{color:var(--info);text-decoration:none} a:hover{text-decoration:underline}
+  h1{font-size:25px;font-weight:600;margin:22px 0 4px}
+  h2{font-size:19px;font-weight:600;margin:34px 0 12px;padding-top:8px;border-top:1px solid var(--border)}
+  h3{font-size:15px;font-weight:600;margin:14px 0 8px}
+  p{margin:0 0 12px} ul{margin:0 0 12px;padding-left:20px} li{margin:6px 0}
+  .sub{color:var(--muted);font-size:14px}
+  .nav{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:18px 0 6px;font-size:14px}
+  .langbar{position:sticky;top:0;z-index:9;background:var(--bg);display:flex;gap:8px;align-items:center;
+    padding:10px 0;margin-bottom:8px;border-bottom:1px solid var(--border)}
+  .langbar .lbl{font-size:13px;color:var(--muted);margin-right:2px}
+  .langbar button{font:inherit;font-size:13.5px;padding:5px 14px;border:1px solid var(--border2);background:transparent;
+    color:var(--text);border-radius:999px;cursor:pointer}
+  .langbar button.active{background:var(--info-bg);color:var(--info);border-color:transparent;font-weight:500}
+  .banner{background:var(--warn-bg);color:var(--warn);border-radius:var(--radius);padding:12px 16px;font-size:13.5px;margin:14px 0}
+  .insight{background:var(--surface);border-radius:var(--radius);padding:12px 16px;margin:12px 0;font-size:14.5px}
+  .insight p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin:8px 0 14px}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--muted);font-weight:500;font-size:12.5px}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .neg{color:var(--danger)} .pos{color:var(--success)}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin:10px 0}
+  .foot{margin-top:36px;padding-top:16px;border-top:1px solid var(--border);font-size:12.5px;color:var(--hint)}
+  body.show-zh .en{display:none}
+  body.show-en .zh{display:none}
+</style>
+</head>
+<body class="show-both">
+<div class="wrap">
+
+  <div class="nav">
+    <a href="./">← <span class="zh">仪表盘 Dashboard</span><span class="en">Dashboard</span></a>
+    <span class="sub">·</span>
+    <a href="https://github.com/YunshuGao/spcx-research">GitHub</a>
+  </div>
+
+  <h1>SPCX · SpaceX 深度解读 / In-depth bilingual interpretation</h1>
+  <div class="sub">基于已核实的 S-1/A#2 招股书 · 截至 2026 年 6 月 13 日 / Based on the verified S-1/A#2 prospectus · as of 13 Jun 2026</div>
+
+  <div class="langbar">
+    <span class="lbl">显示 / Show:</span>
+    <button data-m="both" class="active">双语 Both</button>
+    <button data-m="zh">中文</button>
+    <button data-m="en">English</button>
+  </div>
+
+  <div class="banner">
+    <span class="zh">一般信息，非个人投资建议。持有 SpaceX 的唯一合法方式是通过正规券商购买上市代码 <strong>SPCX</strong>；请无视任何「pre-IPO 内部额度」推销。</span>
+    <span class="en">General information, not personal financial advice. The only legitimate way to own SpaceX is the listed <strong>SPCX</strong> ticker via a regulated broker — ignore any "pre-IPO allocation" pitch.</span>
+  </div>
+
+  <h2>0. 一句话总结 / Bottom line</h2>
+  <div class="zh"><p>SpaceX 已于 2026 年 6 月 12 日以代码 <strong>SPCX</strong> 在纳斯达克上市，发行价 135 美元，首日收 161 美元（+19%）。「打新」窗口已关闭——你现在只能在二级市场以约 161 美元买入。估值极高（约 95 倍市销率），公司整体仍亏损。它已不是「纯火箭公司」，而是「火箭 + 星链 + xAI(Grok) + X(推特)」综合体。可以买，但请小仓位、分批、用限价单。</p></div>
+  <div class="en"><p>SpaceX listed on Nasdaq as <strong>SPCX</strong> on 12 Jun 2026 at US$135, closing day one at US$161 (+19%). The subscription window is closed — you can now only buy on the secondary market at ~US$161. It's priced extremely high (~95× sales) and is still loss-making overall. It's no longer a pure rocket company — it's rockets + Starlink + xAI (Grok) + X (Twitter). You can buy it, but keep the position small, stagger entries, and use limit orders.</p></div>
+
+  <h2>1. 时间点：你已经错过打新 / Timing: the subscription window has closed</h2>
+  <div class="zh"><ul>
+    <li>招股书（prospectus / S-1）5 月 20 日公开；6 月 11 日定价 135 美元；6 月 12 日上市收 161 美元。</li>
+    <li>澳洲的官方零售打新券商是 CommSec，但申请已于 6 月 10 日截止。</li>
+    <li>你拿不到 135 美元打新价了。现在买等于在首日 +19% 的高点、上市第二天进场——新股波动最剧烈的阶段。</li>
+  </ul></div>
+  <div class="en"><ul>
+    <li>The prospectus (S-1) went public 20 May; priced at $135 on 11 Jun; listed 12 Jun, closed $161.</li>
+    <li>In Australia, CommSec was the official retail IPO broker, but applications closed 10 Jun.</li>
+    <li>You can no longer get the $135 IPO price. Buying now means a 19% premium on day two — the most volatile phase for a hot IPO.</li>
+  </ul></div>
+  <div class="insight">
+    <p class="zh"><strong>小知识：</strong>打新 (IPO subscription) = 上市前以发行价申购；二级市场 (secondary market) = 上市后在交易所自由买卖。你现在只能走二级市场。</p>
+    <p class="en"><strong>Insight:</strong> IPO subscription = buying at the offer price before listing; secondary market = trading freely on the exchange after listing. You can only use the secondary market now.</p>
+  </div>
+
+  <h2>2. 你买的到底是什么？/ What are you actually buying?</h2>
+  <div class="zh"><p>多数人以为「SpaceX = 火箭」，其实不对。通过一连串「同一控制人」并购：xAI 在 2025 年 3 月收购了 X（推特），SpaceX 又在 2026 年 2 月收购了 xAI。招股书把三者合并报表。所以一股 SPCX = 火箭（Falcon/Starship/Dragon）+ 星链 + xAI/Grok + X 平台。你买的核心赌注其实是 AI，而不只是火箭。</p>
+    <ul>
+      <li><strong>Space 航天</strong>：火箭与飞船，全球 80%+ 入轨质量、99%+ 成功率。</li>
+      <li><strong>Connectivity 连接（星链）</strong>：约 9,600 颗卫星、1,030 万订阅、164 国——赚钱引擎。</li>
+      <li><strong>AI（xAI/X）</strong>：Grok、COLOSSUS 超算、X（约 5.5 亿月活）——烧钱黑洞。</li>
+    </ul></div>
+  <div class="en"><p>Most people think "SpaceX = rockets." Not quite. Through common-control deals — xAI bought X (Twitter) in Mar 2025, then SpaceX bought xAI in Feb 2026 — the prospectus combines all three. So one SPCX share = rockets (Falcon/Starship/Dragon) + Starlink + xAI/Grok + the X platform. Your core bet is really AI, not just rockets.</p>
+    <ul>
+      <li><strong>Space</strong>: rockets &amp; spacecraft; ~80%+ of global mass-to-orbit, 99%+ success.</li>
+      <li><strong>Connectivity (Starlink)</strong>: ~9,600 satellites, 10.3M subscribers, 164 countries — the profit engine.</li>
+      <li><strong>AI (xAI/X)</strong>: Grok, COLOSSUS superclusters, X (~550M MAUs) — the cash incinerator.</li>
+    </ul></div>
+
+  <h2>3. 财务数据解读 / Reading the financials</h2>
+  <div class="zh"><p>收入增长很猛，但整体在巨亏，亏损几乎全来自 AI 板块。</p></div>
+  <div class="en"><p>Revenue is growing fast, but the whole is deeply loss-making — and the losses come almost entirely from the AI segment.</p></div>
+  <table>
+    <tr><th><span class="zh">美元(百万)</span><span class="en">US$M</span></th><th class="num">Q1 2026</th><th class="num">FY2025</th><th class="num">FY2024</th><th class="num">FY2023</th></tr>
+    <tr><td><span class="zh">营业收入</span><span class="en">Revenue</span></td><td class="num">4,694</td><td class="num">18,674</td><td class="num">14,015</td><td class="num">10,387</td></tr>
+    <tr><td><span class="zh">经营亏损</span><span class="en">Operating income (loss)</span></td><td class="num">(1,943)</td><td class="num">(2,589)</td><td class="num">466</td><td class="num">(3,505)</td></tr>
+    <tr><td><span class="zh">净利润(亏损)</span><span class="en">Net income (loss)</span></td><td class="num neg">(4,276)</td><td class="num neg">(4,937)</td><td class="num">791</td><td class="num neg">(4,628)</td></tr>
+  </table>
+  <table>
+    <tr><th><span class="zh">FY2025 板块</span><span class="en">FY2025 segment</span></th><th class="num"><span class="zh">收入</span><span class="en">Revenue</span></th><th class="num"><span class="zh">经营利润</span><span class="en">Op income</span></th><th class="num"><span class="zh">资本开支</span><span class="en">Capex</span></th></tr>
+    <tr><td>Space</td><td class="num">4,086</td><td class="num neg">(657)</td><td class="num">3,832</td></tr>
+    <tr><td>Starlink</td><td class="num">11,387</td><td class="num pos">+4,423</td><td class="num">4,178</td></tr>
+    <tr><td>AI (xAI/X)</td><td class="num">3,201</td><td class="num neg">(6,355)</td><td class="num">12,727</td></tr>
+  </table>
+  <div class="insight">
+    <p class="zh"><strong>小知识：</strong>星链一年赚 +44 亿经营利润，而 AI 板块一年亏 −63.55 亿、还烧 127 亿资本开支——等于星链利润在给 xAI「输血」。你的回报取决于这个 AI 赌注能否成功。</p>
+    <p class="en"><strong>Insight:</strong> Starlink made +$4.4B operating income while the AI segment lost −$6.4B and burned $12.7B of capex — Starlink's profit subsidises xAI. Your return hinges on whether that AI bet pays off.</p>
+  </div>
+  <div class="zh"><p><strong>资产负债表（2026.3.31，募资后）：</strong>现金约 903 亿美元；总负债 291 亿（含 200 亿过桥贷款，2027 年 9 月到期）；累计赤字 −413 亿；募资净额约 744 亿，全部为新股，主要投向 AI 算力。</p></div>
+  <div class="en"><p><strong>Balance sheet (31 Mar 2026, pro-forma):</strong> cash ≈$90.3B; total debt $29.1B (incl. a $20B bridge loan due Sep 2027); accumulated deficit −$41.3B; net proceeds ≈$74.4B, all primary, mostly for AI compute.</p></div>
+
+  <h2>4. 估值：到底贵不贵？/ Valuation: how expensive?</h2>
+  <div class="zh"><ul>
+    <li>总股本约 130.8 亿股；发行价市值约 1.77 万亿，首日收盘约 2.1 万亿——史上最大 IPO。</li>
+    <li><strong>市销率 P/S ≈ 95 倍</strong>（发行价）/ ≈113 倍（收盘）。对比：最优质盈利软件股 15–25 倍，英伟达最热 ~30–40 倍。一家仍亏损的综合体给到 ~95–113 倍，是「风险投资式」定价。</li>
+    <li><strong>摊薄</strong>：你付 135 美元，但每股有形账面价值仅 7.85 美元，每股 127.15 美元是溢价。</li>
+    <li><strong>扎心对比</strong>：现有股东（含马斯克）平均成本 6.48 美元/股；你付 135 美元。新股东出了历史全部投入资金的 48%（750 亿），却只拿 4.2% 股权。</li>
+  </ul></div>
+  <div class="en"><ul>
+    <li>~13.08B shares; ≈$1.77T at IPO, ≈$2.1T at the day-one close — the largest IPO ever.</li>
+    <li><strong>P/S ≈ 95×</strong> (IPO) / ≈113× (close). For context: premium profitable software 15–25×, Nvidia at its frothiest ~30–40×. ~95–113× for a loss-making conglomerate is venture-style pricing.</li>
+    <li><strong>Dilution</strong>: you pay $135 but net tangible book value is only $7.85/share — a $127.15/share premium.</li>
+    <li><strong>Stark comparison</strong>: existing holders (incl. Musk) averaged $6.48/share; you pay $135. New investors put in 48% of all capital ever ($75B) for just 4.2% of the company.</li>
+  </ul></div>
+  <div class="insight">
+    <p class="zh"><strong>小知识：</strong>市销率 P/S = 市值 ÷ 年收入，用来给尚未盈利的高增长公司估值。倍数越高，市场对未来增长预期越极端、容错率越低。</p>
+    <p class="en"><strong>Insight:</strong> P/S = market cap ÷ annual revenue, used to value not-yet-profitable growth companies. The higher the multiple, the more flawless future growth is priced in — and the less room for error.</p>
+  </div>
+
+  <h2>5. 股权与控制权 / Share structure &amp; control</h2>
+  <div class="zh"><ul>
+    <li><strong>双层股权</strong>：A 类 1 票/股（你买的）；B 类 10 票/股（马斯克的）。</li>
+    <li>上市后马斯克掌握约 <strong>82.4% 投票权</strong>（仅持约 46% 经济股权）。A 类总投票权 11.5%，B 类 88.5%。</li>
+    <li>SpaceX 是「受控公司」，可豁免「董事会多数独立董事」等治理要求。</li>
+    <li>章程放弃公司机会原则：马斯克与董事可做与公司竞争的生意；还有强制仲裁/指定法院条款，限制你起诉的能力。</li>
+    <li><strong>关键人物风险</strong>：马斯克同时是特斯拉 CEO，还有 Neuralink、Boring；招股书明说他不全职、且公司没买关键人物保险。</li>
+    <li>彩蛋：马斯克部分激励股权要「在火星建成至少 100 万人永久殖民地」「太空 100 太瓦/年算力」才解锁——招股书原文。</li>
+  </ul></div>
+  <div class="en"><ul>
+    <li><strong>Dual-class</strong>: Class A = 1 vote/share (yours); Class B = 10 votes/share (Musk's).</li>
+    <li>Post-IPO Musk controls ~<strong>82.4% of votes</strong> (with ~46% of the economic equity). Class A = 11.5% of votes, Class B = 88.5%.</li>
+    <li>SpaceX is a "controlled company" — exempt from rules like a majority-independent board.</li>
+    <li>The charter renounces the corporate-opportunity doctrine: Musk and directors may pursue competing ventures; mandatory arbitration / exclusive-forum clauses limit your ability to sue.</li>
+    <li><strong>Key-man risk</strong>: Musk is also Tesla CEO, plus Neuralink and Boring; the S-1 says he is not full-time and there is no key-person insurance on him.</li>
+    <li>Easter egg: part of Musk's incentive shares vest only on "a permanent human colony on Mars with ≥1 million inhabitants" and "100 TW/yr of orbital compute" — genuinely in the prospectus.</li>
+  </ul></div>
+  <div class="insight">
+    <p class="zh"><strong>小知识：</strong>双层股权让创始人用少数经济股权掌握多数投票权。好处是能长期投入、不受短期股东干扰；坏处是你几乎没有发言权，治理完全系于一人。</p>
+    <p class="en"><strong>Insight:</strong> Dual-class lets a founder keep voting control with minority ownership. Upside: long-term focus. Downside: you have almost no say; governance rests on one person.</p>
+  </div>
+
+  <h2>6. 禁售期与抛压 / Lock-up &amp; supply overhang</h2>
+  <div class="zh"><p>现在流通盘很小（约 5.56 亿 A 股），容易被炒高。但未来 12 个月被锁定的股票会分批解禁，供给可能膨胀 20 倍以上，形成结构性卖压：</p>
+    <ul>
+      <li>基础禁售期 180 天，但有多个提前解禁点；</li>
+      <li>价格触发：若首份财报前 10 个交易日内有 5 天收盘 ≥ 发行价 +30%（≥175.50 美元），提前多解锁约 10%；</li>
+      <li>二季度财报后解锁约 20%；70/90/105/120/135 天各 7%；三季度财报后一次性约 28%（约 13 亿股）；</li>
+      <li>约 60%（约 78 亿股）延长禁售至 366 天，其中马斯克约 64 亿股在第 366 天解禁，且他不参与提前解禁。</li>
+    </ul></div>
+  <div class="en"><p>The float is tiny now (~556M Class A), so it's easy to bid up. But over the next 12 months locked shares release in tranches, potentially expanding supply 20×+ — a structural selling pressure:</p>
+    <ul>
+      <li>Base 180-day lock-up, but with several early-release triggers;</li>
+      <li>Price trigger: if it closes ≥30% above the IPO price (≥$175.50) on 5 of 10 days into the first earnings date, ~10% unlocks early;</li>
+      <li>~20% after Q2 earnings; 7% at days 70/90/105/120/135; a big ~28% (~1.3B shares) after Q3 earnings;</li>
+      <li>~60% (~7.8B shares) on an extended 366-day lock, incl. Musk's ~6.4B at day 366 — he is excluded from early releases.</li>
+    </ul></div>
+  <div class="insight">
+    <p class="zh"><strong>小知识：</strong>禁售期 (lock-up) = 内部人 IPO 后一段时间内不得卖股的承诺。解禁日常带来抛压、压制股价——与基本面无关。这是首日大涨后常见的回落原因。</p>
+    <p class="en"><strong>Insight:</strong> A lock-up is a promise by insiders not to sell for a period after IPO. Expiry dates bring selling pressure regardless of fundamentals — a common reason hot IPOs fade after the day-one pop.</p>
+  </div>
+
+  <h2>7. 多头 vs 空头 / Bull vs bear</h2>
+  <div class="card">
+    <h3 class="pos">🟢 多头逻辑 / Bull case</h3>
+    <div class="zh"><ul><li>星链是全球唯一规模化低轨宽带，已盈利、增速 50%；火箭近乎垄断；Starship 若成功颠覆成本；Grok 前沿 AI + 约 900 亿现金；Oppenheimer 给「跑赢大盘、目标价 190 美元」。</li></ul></div>
+    <div class="en"><ul><li>Starlink is the only global LEO broadband at scale, profitable, +50% growth; near-monopoly launch; Starship could upend launch economics; frontier AI + ~$90B cash; Oppenheimer: Outperform, $190 target.</li></ul></div>
+  </div>
+  <div class="card">
+    <h3 class="neg">🔴 空头逻辑 / Bear case</h3>
+    <div class="zh"><ul><li>~95 倍市销率、整体亏损（−49 亿）；AI 烧 127 亿资本开支；星链每用户收入 ARPU 下滑（99→91→81 美元）；马斯克 82.4% 投票权、兼职、无关键人保险；12 个月解禁洪流；做空大佬 Chanos 称估值是「空想」。</li></ul></div>
+    <div class="en"><ul><li>~95× sales, loss-making (−$4.9B); AI burning $12.7B capex; Starlink ARPU falling ($99→$91→$81); Musk 82.4% votes, part-time, no key-man insurance; a 12-month unlock flood; Jim Chanos calls it "hopes and dreams."</li></ul></div>
+  </div>
+
+  <h2>8. 风险清单 / Key risks</h2>
+  <div class="zh"><ul>
+    <li><strong>Starship 风险</strong>——招股书列的第 1 大风险，整个增长故事押在它身上。</li>
+    <li><strong>关键人物</strong>——高度依赖马斯克；不全职；无关键人保险。</li>
+    <li><strong>治理</strong>——A 类股东几乎无权；放弃公司机会；强制仲裁。</li>
+    <li><strong>关联交易</strong>——与特斯拉的 Terafab（芯片）、Macrohard（AI）条款未定；60 亿美元收购 Cursor 期权。</li>
+    <li><strong>竞争</strong>——亚马逊 Kuiper、Blue Origin、中国星座（国网/千帆）；AI 端 OpenAI/谷歌。</li>
+    <li><strong>未验证赌注</strong>——轨道 AI 算力（2028+）、月球经济、火星——现价已计入。</li>
+    <li><strong>汇率风险</strong>——澳元买美元资产，澳元升值会侵蚀回报。</li>
+  </ul></div>
+  <div class="en"><ul>
+    <li><strong>Starship</strong> — the #1 listed risk; the whole growth story rides on it.</li>
+    <li><strong>Key-man</strong> — heavy dependence on Musk; part-time; no key-person insurance.</li>
+    <li><strong>Governance</strong> — Class A holders nearly powerless; renounced corporate opportunities; mandatory arbitration.</li>
+    <li><strong>Related parties</strong> — undefined Tesla deals (Terafab chips, Macrohard AI); a $6B Cursor option.</li>
+    <li><strong>Competition</strong> — Amazon Kuiper, Blue Origin, Chinese constellations; OpenAI/Google in AI.</li>
+    <li><strong>Unproven bets</strong> — orbital AI compute (2028+), lunar economy, Mars — priced in today.</li>
+    <li><strong>Currency risk</strong> — a USD asset bought with AUD; a rising AUD erodes returns.</li>
+  </ul></div>
+
+  <h2>9. 分析师观点 / Analyst views</h2>
+  <div class="zh"><ul>
+    <li>Oppenheimer：跑赢大盘，目标价 190 美元（较 161 约 +18%，多头锚点）。</li>
+    <li>Jim Chanos（传奇做空者）：1.75 万亿估值是「空想」。</li>
+    <li>Jim Cramer：首日「不可持续」（网传「首日冲 5 万亿」未经证实，属炒作）。</li>
+    <li>零售打新额度在定价前被下调到「20% 出头」。</li>
+  </ul></div>
+  <div class="en"><ul>
+    <li>Oppenheimer: Outperform, $190 target (~+18% vs $161 — the bull anchor).</li>
+    <li>Jim Chanos (legendary short-seller): the $1.75T valuation is "hopes and dreams."</li>
+    <li>Jim Cramer: called the debut "unsustainable" (the "$5T day one" line is unverified hype).</li>
+    <li>Retail IPO allocation was trimmed to the low-20s% before pricing.</li>
+  </ul></div>
+
+  <h2>10. 如何在悉尼买入 / How to buy from Sydney</h2>
+  <div class="zh"><p>1 万澳元 ≈ 6,500 美元 ≈ 161 美元时约 40 股（请查实时汇率）。</p>
+    <ol>
+      <li>开受 ASIC 监管的券商账户——IBKR（换汇最便宜）、Stake、moomoo。</li>
+      <li>签 W-8BEN 表、填 TFN（税号）。</li>
+      <li>把澳元换成美元——换汇点差才是 1 万澳元上的主要成本。</li>
+      <li>搜代码 SPCX，用限价单买，别用市价单；可分批进。</li>
+      <li>T+1 交割，股票由美国托管行托管；保留交易单给 ATO（税务局）。</li>
+    </ol></div>
+  <div class="en"><p>A$10,000 ≈ US$6,500 ≈ ~40 shares at $161 (check the live rate).</p>
+    <ol>
+      <li>Open an ASIC-regulated broker — IBKR (cheapest FX), Stake or moomoo.</li>
+      <li>Sign the W-8BEN form, add your TFN.</li>
+      <li>Convert AUD→USD — the FX spread is the real cost on $10k.</li>
+      <li>Buy ticker SPCX with a limit order, not market; consider staggering.</li>
+      <li>Settles T+1, held via a US custodian; keep records for the ATO.</li>
+    </ol></div>
+  <table>
+    <tr><th><span class="zh">券商</span><span class="en">Broker</span></th><th><span class="zh">美股佣金</span><span class="en">Commission</span></th><th><span class="zh">换汇费</span><span class="en">FX</span></th></tr>
+    <tr><td>Interactive Brokers</td><td>~$0.0035/<span class="zh">股</span><span class="en">sh</span> (min ~$0.35)</td><td>~0.002% (min $2) — <span class="zh">最便宜</span><span class="en">cheapest</span></td></tr>
+    <tr><td>moomoo</td><td>~US$0.99</td><td><span class="zh">点差有竞争力</span><span class="en">competitive</span></td></tr>
+    <tr><td>Stake</td><td>US$3 (≤$30k)</td><td>~0.5–0.7%</td></tr>
+  </table>
+  <div class="zh"><p><strong>税务：</strong>W-8BEN 把美股股息预扣税从 30% 降到 15%（但 SPCX 不分红）；卖出有澳洲资本利得税（CGT），持有满 12 个月享 50% 折扣；海外股票无 franking credit；美国遗产税非居民门槛 6 万美元，1 万澳元远低于此，且有澳美税收协定。</p></div>
+  <div class="en"><p><strong>Tax:</strong> W-8BEN cuts US dividend withholding 30%→15% (SPCX pays no dividend); selling triggers Australian CGT, with a 50% discount after 12 months; no franking credits on foreign shares; US estate tax has a $60k non-resident threshold (irrelevant at A$10k, and the AU–US treaty lifts it).</p></div>
+
+  <h2>11. 防骗提醒 / Scam warning ⚠️</h2>
+  <div class="zh"><p>现在能合法持有 SpaceX 的唯一方式，是通过正规券商买上市代码 SPCX。任何通过邮件、Telegram、WhatsApp、微信群发给你的「打折 pre-IPO SpaceX 内部额度 / 保证回报 / SPV 份额」都是骗局。美国 SEC 多次就「假冒 SpaceX pre-IPO」诈骗发警告；有人通过 SPV 买的「SpaceX」上市后才发现根本没有可交易股票。请确认券商持有 ASIC AFSL 牌照。</p></div>
+  <div class="en"><p>The only legitimate way to own SpaceX now is buying the listed SPCX ticker through a regulated broker. Any "discounted pre-IPO SpaceX allocation / guaranteed returns / SPV interest" via email, Telegram, WhatsApp or WeChat is a scam. The SEC has repeatedly warned about fake "pre-IPO SpaceX" fraud; some SPV "owners" find they hold nothing tradable. Verify your broker holds an ASIC AFSL.</p></div>
+
+  <h2>12. 给你 1 万澳元的务实建议 / Practical thoughts for your A$10k</h2>
+  <div class="zh"><ol>
+    <li>把这 1 万澳元当成「可承受腰斩、3–5 年不动」的钱。</li>
+    <li>别一次性、一个价位全买——分批摊平成本（如先放 1/3，财报/解禁后再补）。</li>
+    <li>每次都用限价单。</li>
+    <li>在乎成本就用 IBKR（换汇便宜）。</li>
+    <li>长期持有思路，而非短炒。</li>
+    <li>投前再读一遍招股书的风险因素。</li>
+    <li>仓位要小：单一高波动个股，1 万澳元对多数人是合理上限。</li>
+  </ol></div>
+  <div class="en"><ol>
+    <li>Treat this A$10k as money that could halve and that you won't touch for 3–5 years.</li>
+    <li>Don't buy it all at one price — stagger to average in (e.g. ~1/3 now, more after earnings/lock-ups).</li>
+    <li>Use a limit order every time.</li>
+    <li>Use IBKR if cost matters (cheap FX).</li>
+    <li>Think long-term hold, not a quick flip.</li>
+    <li>Re-read the prospectus risk factors before committing.</li>
+    <li>Keep it small: for a single volatile stock, A$10k is a sensible maximum for most.</li>
+  </ol></div>
+
+  <h2>13. 关键术语对照表 / Bilingual glossary</h2>
+  <table>
+    <tr><th>中文</th><th>English</th><th><span class="zh">含义</span><span class="en">Meaning</span></th></tr>
+    <tr><td>招股书</td><td>Prospectus (S-1)</td><td><span class="zh">上市前法定披露文件</span><span class="en">pre-IPO disclosure</span></td></tr>
+    <tr><td>打新</td><td>IPO subscription</td><td><span class="zh">以发行价申购新股</span><span class="en">buy at the offer price</span></td></tr>
+    <tr><td>二级市场</td><td>Secondary market</td><td><span class="zh">上市后交易所买卖</span><span class="en">post-listing trading</span></td></tr>
+    <tr><td>市销率</td><td>Price-to-sales (P/S)</td><td><span class="zh">市值 ÷ 年收入</span><span class="en">market cap ÷ revenue</span></td></tr>
+    <tr><td>净亏损</td><td>Net loss</td><td><span class="zh">扣除所有费用后的亏损</span><span class="en">loss after all costs</span></td></tr>
+    <tr><td>累计赤字</td><td>Accumulated deficit</td><td><span class="zh">历年累计净亏损</span><span class="en">cumulative net losses</span></td></tr>
+    <tr><td>资本开支</td><td>Capex</td><td><span class="zh">买设备/建产能支出</span><span class="en">spend on assets/capacity</span></td></tr>
+    <tr><td>双层股权</td><td>Dual-class shares</td><td><span class="zh">不同投票权的股份</span><span class="en">unequal voting rights</span></td></tr>
+    <tr><td>受控公司</td><td>Controlled company</td><td><span class="zh">单一人/团体控股</span><span class="en">one holder controls</span></td></tr>
+    <tr><td>摊薄</td><td>Dilution</td><td><span class="zh">新股稀释每股价值</span><span class="en">new shares dilute value</span></td></tr>
+    <tr><td>禁售期</td><td>Lock-up period</td><td><span class="zh">内部人限售期</span><span class="en">insiders can't sell</span></td></tr>
+    <tr><td>关联交易</td><td>Related-party transactions</td><td><span class="zh">与关联方的交易</span><span class="en">deals with affiliates</span></td></tr>
+    <tr><td>关键人物风险</td><td>Key-man risk</td><td><span class="zh">过度依赖某个人</span><span class="en">over-reliance on one person</span></td></tr>
+    <tr><td>预扣税</td><td>Withholding tax</td><td><span class="zh">股息预扣（W-8BEN 降至 15%）</span><span class="en">dividend withholding (W-8BEN→15%)</span></td></tr>
+    <tr><td>资本利得税</td><td>Capital gains tax (CGT)</td><td><span class="zh">卖出获利征税</span><span class="en">tax on selling gains</span></td></tr>
+    <tr><td>托管</td><td>Custodian</td><td><span class="zh">代持美股的机构</span><span class="en">holds your US shares</span></td></tr>
+    <tr><td>汇率风险</td><td>FX / currency risk</td><td><span class="zh">澳元/美元波动</span><span class="en">AUD/USD swings</span></td></tr>
+  </table>
+
+  <div class="foot">
+    <span class="zh">个人研究快照，编制于 2026 年 6 月 13 日，数据来自 SpaceX S-1/A#2 招股书及公开报道，可能过时。本文为一般信息与教育性解读，非个人投资建议或买卖推荐。投资有风险，请自行研究并考虑持牌顾问。</span>
+    <span class="en">Personal research snapshot compiled 13 Jun 2026 from the SpaceX S-1/A#2 prospectus and public reporting; may be out of date. General information and educational interpretation only — not personal financial advice or a buy/sell recommendation. Do your own research and consider licensed advice.</span>
+  </div>
+
+</div>
+
+<script>
+  function setLang(m){
+    document.body.className = 'show-' + m;
+    var btns = document.querySelectorAll('.langbar button');
+    for (var i=0;i<btns.length;i++){ btns[i].classList.toggle('active', btns[i].getAttribute('data-m')===m); }
+    try{ localStorage.setItem('spcxLang', m); }catch(e){}
+  }
+  document.querySelectorAll('.langbar button').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-m')); });
+  });
+  var saved = 'both';
+  try{ saved = localStorage.getItem('spcxLang') || 'both'; }catch(e){}
+  setLang(saved);
+</script>
+</body>
+</html>
